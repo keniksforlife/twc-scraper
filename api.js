@@ -10,12 +10,19 @@ const PORT = 3000;
 
 async function loginAndScrape(limit = 20) {
     const options = new chrome.Options();
-    options.addArguments('headless'); // Enable headless mode
+    options.addArguments('headless'); 
     options.addArguments('disable-gpu');
     options.addArguments('no-sandbox');
     options.addArguments('disable-dev-shm-usage');
+    options.addArguments('disable-setuid-sandbox');
+    options.addArguments('disable-extensions');
+    options.addArguments('disable-software-rasterizer');
+    options.addArguments('start-maximized');
+    options.addArguments('disable-infobars');
+    options.addArguments('remote-debugging-port=9222'); // Necessary for headless mode
 
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+
 
 
 
