@@ -21,6 +21,9 @@ async function loginAndScrape(limit = 20) {
     options.addArguments('disable-infobars');
     options.addArguments('remote-debugging-port=9222'); // Necessary for headless mode
 
+    // Point to the installed Chrome binary
+    options.setChromeBinaryPath('/usr/bin/google-chrome-stable');
+
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
 
